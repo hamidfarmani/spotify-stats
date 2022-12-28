@@ -1,0 +1,54 @@
+import {
+  ActionIcon,
+  Anchor,
+  Group,
+  MediaQuery,
+  Title,
+  Tooltip,
+} from "@mantine/core";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { MoonStars, Sun } from "tabler-icons-react";
+import { useAppContext } from "../context/AppContext";
+
+const MainHeader = ({ dark, toggleColorScheme }) => {
+  const [arraySize, setArraySize] = useState(20);
+  const infoState = useAppContext();
+
+  const onGenerateClick = () => {
+    infoState.generateNewArray(arraySize);
+  };
+
+  return (
+    <Group position="apart" style={{ width: "100%" }}>
+      <MediaQuery smallerThan="lg" styles={{ display: "none" }}>
+        <Group position="left">
+          <Anchor component={Link} to="/" style={{ textDecoration: "none" }}>
+            <Title order={2}>spotify-stats</Title>
+          </Anchor>
+        </Group>
+      </MediaQuery>
+
+      <Group position="right">
+        <Tooltip
+          label={dark ? "Light mode" : "Dark mode"}
+          radius="md"
+          position="bottom"
+          withArrow
+          transition="fade"
+          transitionDuration={200}
+        >
+          <ActionIcon
+            variant="outline"
+            color={dark ? "yellow" : "blue"}
+            onClick={() => toggleColorScheme()}
+          >
+            {dark ? <Sun size={18} /> : <MoonStars size={18} />}
+          </ActionIcon>
+        </Tooltip>
+      </Group>
+    </Group>
+  );
+};
+
+export default MainHeader;
