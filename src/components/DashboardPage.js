@@ -1,6 +1,5 @@
 import {
   Accordion,
-  Button,
   Paper,
   ScrollArea,
   Space,
@@ -9,15 +8,12 @@ import {
 } from "@mantine/core";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { SpotifyAuth, Scopes } from "react-spotify-auth";
 
 const DashboardPage = () => {
   const { hash } = useLocation();
 
   const [token, setToken] = useState("");
   const [value, setValue] = useState([]);
-  const CLIENT_ID = "b83f71f2f54f4e50966d6c1fd1e1606a";
-  const REDIRECT_URI = "http://localhost:3000";
 
   useEffect(() => {
     let token = window.localStorage.getItem("token");
@@ -41,13 +37,6 @@ const DashboardPage = () => {
       <Paper shadow="md" p="md">
         <Title order={1}>Spotify stats</Title>
         <Space h="md" />
-
-        <SpotifyAuth
-          redirectUri={REDIRECT_URI}
-          clientID={CLIENT_ID}
-          scopes={[Scopes.userReadPrivate, Scopes.userTopRead]}
-          onAccessToken={(token) => setToken(token)}
-        />
 
         <Space h="sm" />
 

@@ -16,6 +16,7 @@ import MainHeader from "../components/MainHeader";
 import ArtistsPage from "../components/ArtistsPage";
 import { NavMenu } from "../components/NavMenu";
 import ProfilePage from "../components/ProfilePage";
+import { Login } from "../components/Login";
 
 const AppRouter = () => {
   const theme = useMantineTheme();
@@ -31,6 +32,7 @@ const AppRouter = () => {
   };
 
   const dark = colorScheme === "dark";
+  const userLoggedIn = localStorage.getItem("token") ? true : false;
 
   return (
     <ColorSchemeProvider
@@ -56,7 +58,7 @@ const AppRouter = () => {
             navbarOffsetBreakpoint="sm"
             asideOffsetBreakpoint="sm"
             fixed
-            navbar={<NavMenu opened={opened} />}
+            navbar={userLoggedIn ? <NavMenu opened={opened} /> : ""}
             header={
               <Header height={70} p="md" background={theme.colors.gray[6]}>
                 <div
@@ -85,6 +87,7 @@ const AppRouter = () => {
           >
             <Routes>
               <Route path="/" element={<DashboardPage />} exact />
+              <Route path="/login" element={<Login />} exact />
               <Route path="/dashboard" element={<DashboardPage />} exact />
               <Route path="/profile" element={<ProfilePage />} exact />
               <Route path="/artists" element={<ArtistsPage />} exact />

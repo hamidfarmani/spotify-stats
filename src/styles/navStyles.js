@@ -3,6 +3,7 @@ import { createStyles } from "@mantine/core";
 export const navStyles = createStyles((theme) => ({
   navbar: {
     paddingTop: 0,
+    paddingBottom: 0,
   },
 
   section: {
@@ -112,5 +113,9 @@ export const navStyles = createStyles((theme) => ({
           : theme.colors.gray[0],
       color: theme.colorScheme === "dark" ? theme.white : theme.black,
     },
+  },
+
+  footer: {
+    paddingTop: theme.spacing.md,
   },
 }));

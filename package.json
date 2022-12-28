@@ -1,7 +1,7 @@
 {
   "name": "spotify-stats",
   "version": "1.0.0",
-  "homepage": "http://hamidfarmani.github.io/spotify-stats",
+  "homepage": "https://hamidfarmani.github.io/spotify-stats/",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.5",

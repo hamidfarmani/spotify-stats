@@ -3,11 +3,9 @@ import { Link, useLocation } from "react-router-dom";
 import {
   BrandGithub,
   ChartBubble,
-  ExternalLink,
   LayoutDashboard,
   Microphone2,
   Selector,
-  SquareHalf,
   User,
 } from "tabler-icons-react";
 import image from "../styles/images/profile.jpg";

@@ -1,22 +1,9 @@
-import {
-  Button,
-  createStyles,
-  Paper,
-  PasswordInput,
-  Text,
-  TextInput,
-  Title,
-} from "@mantine/core";
+import { createStyles, Paper, Title } from "@mantine/core";
 
-import { useForm } from "@mantine/form";
-import { showNotification } from "@mantine/notifications";
-import React from "react";
-import { FormattedMessage, useIntl } from "react-intl";
-import { Link } from "react-router-dom";
-import { X } from "tabler-icons-react";
-import { useAuthContext } from "../context/AuthProvider";
-import Background from "../img/login.jpg";
-import { useLogin } from "./data-access/useLogin";
+import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
+import { Scopes, SpotifyAuth } from "react-spotify-auth";
+import Background from "../styles/images/background.jpg";
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
@@ -56,59 +43,13 @@ const useStyles = createStyles((theme) => ({
 }));
 
 export const Login = (props) => {
-  const intl = useIntl();
-
-  const authContext = useAuthContext();
-  const { mutate: applyLogin } = useLogin();
-
-  const form = useForm({
-    initialValues: {
-      email: "",
-      password: "",
-    },
-    validate: {
-      email: (value) =>
-        value.length === 0
-          ? intl.formatMessage({ id: "general.email-required-error" })
-          : /^\S+@\S+$/.test(value)
-          ? null
-          : intl.formatMessage({ id: "general.email-invalid-error" }),
-      password: (value) =>
-        value.length === 0
-          ? intl.formatMessage({ id: "general.password-required-error" })
-          : null,
-    },
-  });
-
-  const submitPost = async ({ email, password }) => {
-    applyLogin(
-      { email, password },
-      {
-        onSuccess: (response) => {
-          const access_token = response.access_token;
-          const refresh_token = response.refresh_token;
-
-          authContext.login({
-            access_token,
-            refresh_token,
-          });
-        },
-        onError: (error) => {
-          showNotification({
-            title: intl.formatMessage({ id: "general.alert.error" }),
-            icon: <X />,
-            color: "red",
-            message:
-              error.response.status === 401
-                ? "Please check your email and password."
-                : "Something went wrong. Please contact customer service.",
-          });
-        },
-      }
-    );
-  };
-
   const { classes } = useStyles();
+  const { hash } = useLocation();
+
+  const [token, setToken] = useState("");
+  const CLIENT_ID = "b83f71f2f54f4e50966d6c1fd1e1606a";
+  const REDIRECT_URI = "http://localhost:3000";
+
   return (
     <div className={classes.wrapper}>
       <Paper className={classes.form} shadow="md" radius="sm" p={30}>
@@ -119,38 +60,15 @@ export const Login = (props) => {
           mt="md"
           mb={50}
         >
-          Welcome to GSM Electric!
+          Welcome to Spotify stats!
         </Title>
-        <form onSubmit={form.onSubmit(submitPost)}>
-          <TextInput
-            className="login-group__item"
-            label={intl.formatMessage({ id: "Login.email" })}
-            placeholder={intl.formatMessage({ id: "Login.email" })}
-            withAsterisk
-            {...form.getInputProps("email")}
-          />
-          <PasswordInput
-            className="login-group__item"
-            label={intl.formatMessage({ id: "Login.password" })}
-            placeholder={intl.formatMessage({ id: "Login.password" })}
-            withAsterisk
-            {...form.getInputProps("password")}
-          />
-          <Button
-            fullWidth
-            mt="xl"
-            size="md"
-            type="submit"
-            color="cyan"
-            className="gs-default-button"
-          >
-            <FormattedMessage id="Login.login" defaultMessage="Login" />
-          </Button>
-        </form>
-
-        <Text align="center" mt="md">
-          <Link to="/forgot-password">Forgot password?</Link>
-        </Text>
+        <SpotifyAuth
+          redirectUri={REDIRECT_URI}
+          clientID={CLIENT_ID}
+          scopes={[Scopes.userReadPrivate, Scopes.userTopRead]}
+          onAccessToken={(token) => setToken(token)}
+          title="Login to your Spotify"
+        />
       </Paper>
     </div>
   );
