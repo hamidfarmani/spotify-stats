@@ -7,10 +7,13 @@ import {
   Tooltip,
 } from "@mantine/core";
 import { Link } from "react-router-dom";
-import { MoonStars, Sun } from "tabler-icons-react";
+import { Logout, MoonStars, Sun } from "tabler-icons-react";
+import { useAuthContext } from "../context/AuthProvider";
 import image from "../styles/images/spotify-icons-logos/Spotify_Logo_RGB_Green.png";
 
 const MainHeader = ({ dark, toggleColorScheme }) => {
+  const { logout } = useAuthContext();
+
   return (
     <Group position="apart" style={{ width: "100%" }}>
       <MediaQuery smallerThan="lg" styles={{ display: "none" }}>
@@ -36,6 +39,20 @@ const MainHeader = ({ dark, toggleColorScheme }) => {
             onClick={() => toggleColorScheme()}
           >
             {dark ? <Sun size={18} /> : <MoonStars size={18} />}
+          </ActionIcon>
+        </Tooltip>
+
+        <Tooltip label="Logout">
+          <ActionIcon
+            variant="outline"
+            color={dark ? "yellow" : "blue"}
+            component={Link}
+            to={"/"}
+            onClick={() => {
+              logout();
+            }}
+          >
+            <Logout size={18} />
           </ActionIcon>
         </Tooltip>
       </Group>

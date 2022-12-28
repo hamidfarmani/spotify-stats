@@ -2,7 +2,6 @@ import { Center, Loader } from "@mantine/core";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { QueryClient, QueryClientProvider } from "react-query";
-import { AppContext } from "./context/AppContext";
 import { AuthProvider } from "./context/AuthProvider";
 import reportWebVitals from "./reportWebVitals";
 import AppRouter from "./routers/AppRouter";
@@ -21,9 +20,7 @@ root.render(
             </Center>
           }
         >
-          <AppContext>
-            <AppRouter />
-          </AppContext>
+          <AppRouter />
         </React.Suspense>
       </AuthProvider>
     </React.StrictMode>
