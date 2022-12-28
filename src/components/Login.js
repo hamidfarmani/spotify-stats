@@ -1,8 +1,8 @@
 import { createStyles, Paper, Title } from "@mantine/core";
 
-import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
+import React from "react";
 import { Scopes, SpotifyAuth } from "react-spotify-auth";
+import { useAuthContext } from "../context/AuthProvider";
 import Background from "../styles/images/background.jpg";
 
 const useStyles = createStyles((theme) => ({
@@ -42,13 +42,17 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-export const Login = (props) => {
+export const Login = () => {
   const { classes } = useStyles();
-  const { hash } = useLocation();
+  const authContext = useAuthContext();
 
-  const [token, setToken] = useState("");
   const CLIENT_ID = "b83f71f2f54f4e50966d6c1fd1e1606a";
   const REDIRECT_URI = "http://localhost:3000";
+
+  function doLogin(accessToken) {
+    window.location.hash = "";
+    authContext.login({ accessToken });
+  }
 
   return (
     <div className={classes.wrapper}>
@@ -70,7 +74,7 @@ export const Login = (props) => {
             Scopes.userTopRead,
             Scopes.userReadRecentlyPlayed,
           ]}
-          onAccessToken={(token) => setToken(token)}
+          onAccessToken={(token) => doLogin(token)}
           title="Login to your Spotify"
         />
       </Paper>

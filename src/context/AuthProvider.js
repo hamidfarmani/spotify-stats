@@ -8,7 +8,7 @@ import React, {
 
 const initialState = {
   user: null,
-  roles: null,
+  userLoggedIn: false,
 };
 
 export const AuthContext = createContext({
@@ -31,47 +31,36 @@ function authReducer(state, action) {
 export const AuthProvider = ({ children }) => {
   const [authState, dispatch] = useReducer(authReducer, initialState);
 
-  const login = useCallback(({ access_token }) => {
+  const login = useCallback(({ accessToken }) => {
     dispatch({
       type: "Login",
       payload: {
         user: "",
+        userLoggedIn: true,
       },
     });
 
-    localStorage.token = access_token;
+    localStorage.token = accessToken;
   }, []);
 
   const logout = () => {
     dispatch({ type: "Logout" });
-    const accecTokken = localStorage.getItem("token");
-
-    fetch("/api/v1/user/logout", {
-      method: "POST",
-      headers: {
-        Authorization: "Bearer " + accecTokken,
-        "Content-Type": "application/json",
-      },
-    })
-      .then((json) => {
-        window.location.reload();
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-
-    sessionStorage.clear();
-    // removeUserInfoFromLocalStorage();
+    localStorage.removeItem("token");
     this.props.history.push("/login");
   };
 
   useEffect(() => {
-    dispatch({
-      type: "Login",
-      payload: {
-        user: "",
-      },
-    });
+    const access_token = localStorage.getItem("token");
+
+    if (access_token) {
+      dispatch({
+        type: "Login",
+        payload: {
+          user: "",
+          userLoggedIn: true,
+        },
+      });
+    }
   }, [login]);
 
   return (

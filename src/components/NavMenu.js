@@ -3,7 +3,6 @@ import { Link, useLocation } from "react-router-dom";
 import {
   BrandGithub,
   History,
-  LayoutDashboard,
   Microphone2,
   Music,
   Selector,

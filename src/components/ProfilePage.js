@@ -1,4 +1,4 @@
-import { Image, Loader, Paper, Space, Text, Title } from "@mantine/core";
+import { Image, Loader, Paper, Space, Title } from "@mantine/core";
 import { useGetProfile } from "./data-access/useGetProfile";
 import { TopArtists } from "./TopArtists";
 import { TopTracks } from "./TopTracks";

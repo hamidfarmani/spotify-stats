@@ -3,6 +3,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { AppContext } from "./context/AppContext";
+import { AuthProvider } from "./context/AuthProvider";
 import reportWebVitals from "./reportWebVitals";
 import AppRouter from "./routers/AppRouter";
 
@@ -12,17 +13,19 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <QueryClientProvider client={queryClient}>
     <React.StrictMode>
-      <React.Suspense
-        fallback={
-          <Center>
-            <Loader />
-          </Center>
-        }
-      >
-        <AppContext>
-          <AppRouter />
-        </AppContext>
-      </React.Suspense>
+      <AuthProvider>
+        <React.Suspense
+          fallback={
+            <Center>
+              <Loader />
+            </Center>
+          }
+        >
+          <AppContext>
+            <AppRouter />
+          </AppContext>
+        </React.Suspense>
+      </AuthProvider>
     </React.StrictMode>
   </QueryClientProvider>
 );

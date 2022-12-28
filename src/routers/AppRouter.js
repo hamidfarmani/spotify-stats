@@ -19,6 +19,8 @@ import { PageNotFound } from "../components/PageNotFound";
 import ProfilePage from "../components/ProfilePage";
 import RecentTracksPage from "../components/RecentTracksPage";
 import TracksPage from "../components/TracksPage";
+import { useAuthContext } from "../context/AuthProvider";
+import Guard from "./Guard";
 
 const AppRouter = () => {
   const theme = useMantineTheme();
@@ -34,7 +36,7 @@ const AppRouter = () => {
   };
 
   const dark = colorScheme === "dark";
-  const userLoggedIn = localStorage.getItem("token") ? true : false;
+  const { authState } = useAuthContext();
 
   return (
     <ColorSchemeProvider
@@ -60,7 +62,7 @@ const AppRouter = () => {
             navbarOffsetBreakpoint="sm"
             asideOffsetBreakpoint="sm"
             fixed
-            navbar={userLoggedIn ? <NavMenu opened={opened} /> : ""}
+            navbar={authState.userLoggedIn ? <NavMenu opened={opened} /> : ""}
             header={
               <Header height={70} p="md" background={theme.colors.gray[6]}>
                 <div
@@ -88,7 +90,14 @@ const AppRouter = () => {
             }
           >
             <Routes>
-              <Route path="/" element={<ProfilePage />} exact />
+              <Route
+                path="/"
+                element={
+                  <Guard>
+                    <Login />
+                  </Guard>
+                }
+              />
               <Route path="/login" element={<Login />} exact />
               <Route path="/profile" element={<ProfilePage />} exact />
               <Route path="/artists" element={<ArtistsPage />} exact />
