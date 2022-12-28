@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.js": "/hamidfarmani/spotify-stats/static/js/main.00a76f0b.js",
-    "static/js/787.2b414f07.chunk.js": "/hamidfarmani/spotify-stats/static/js/787.2b414f07.chunk.js",
-    "static/media/background.jpg": "/hamidfarmani/spotify-stats/static/media/background.69032d911363d55c822a.jpg",
-    "static/media/profile.jpg": "/hamidfarmani/spotify-stats/static/media/profile.71c3fcb26b15a15fd871.jpg",
-    "static/media/Spotify_Logo_RGB_Green.png": "/hamidfarmani/spotify-stats/static/media/Spotify_Logo_RGB_Green.0c4ae91bae23217d39c9.png",
-    "index.html": "/hamidfarmani/spotify-stats/index.html",
-    "main.00a76f0b.js.map": "/hamidfarmani/spotify-stats/static/js/main.00a76f0b.js.map",
-    "787.2b414f07.chunk.js.map": "/hamidfarmani/spotify-stats/static/js/787.2b414f07.chunk.js.map"
+    "main.js": "/spotify-stats/static/js/main.5fd6ca00.js",
+    "static/js/787.2b414f07.chunk.js": "/spotify-stats/static/js/787.2b414f07.chunk.js",
+    "static/media/background.jpg": "/spotify-stats/static/media/background.69032d911363d55c822a.jpg",
+    "static/media/profile.jpg": "/spotify-stats/static/media/profile.71c3fcb26b15a15fd871.jpg",
+    "static/media/Spotify_Logo_RGB_Green.png": "/spotify-stats/static/media/Spotify_Logo_RGB_Green.0c4ae91bae23217d39c9.png",
+    "index.html": "/spotify-stats/index.html",
+    "main.5fd6ca00.js.map": "/spotify-stats/static/js/main.5fd6ca00.js.map",
+    "787.2b414f07.chunk.js.map": "/spotify-stats/static/js/787.2b414f07.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.00a76f0b.js"
+    "static/js/main.5fd6ca00.js"
   ]
 }
