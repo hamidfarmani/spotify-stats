@@ -1,10 +1,8 @@
 import { Carousel } from "@mantine/carousel";
 import {
-  Button,
   createStyles,
   Loader,
   Paper,
-  Text,
   Title,
   useMantineTheme,
 } from "@mantine/core";
@@ -40,7 +38,7 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-function Card({ image, title, category, followers }) {
+function Card({ image, title }) {
   const { classes } = useStyles();
 
   return (
@@ -52,19 +50,10 @@ function Card({ image, title, category, followers }) {
       className={classes.card}
     >
       <div>
-        <Text className={classes.category} size="xs">
-          {category}
-        </Text>
-        <Text className={classes.category} size="s">
-          {followers ? followers + " followers" : ""}
-        </Text>
         <Title order={3} className={classes.title}>
           {title}
         </Title>
       </div>
-      <Button variant="white" color="dark">
-        Read article
-      </Button>
     </Paper>
   );
 }
@@ -81,8 +70,6 @@ export const TopArtists = () => {
     topArtists.items.map((item) => ({
       image: item.images[0].url,
       title: item.name,
-      category: item.genres,
-      followers: item.followers ? item.followers.total.toLocaleString() : null,
     }));
   const slides = data.map((item) => (
     <Carousel.Slide key={item.title}>

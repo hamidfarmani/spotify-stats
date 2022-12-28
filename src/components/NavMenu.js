@@ -36,14 +36,6 @@ export const NavMenu = ({ opened }) => {
 
       <Navbar.Section className={classes.section}>
         <NavLink
-          label="Dashboard"
-          component={Link}
-          to="/dashboard"
-          icon={<LayoutDashboard />}
-          active={location.pathname === "/dashboard"}
-        />
-
-        <NavLink
           label="Profile"
           component={Link}
           to="/profile"

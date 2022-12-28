@@ -17,8 +17,6 @@ const ProfilePage = () => {
   return (
     <>
       <Paper shadow="md" p="md">
-        {/* <Stack align="center"> */}
-
         <Image
           radius="xl"
           width={200}
@@ -29,20 +27,6 @@ const ProfilePage = () => {
         />
         <Title order={1}>{profile.display_name}</Title>
         <Title order={5}>Followers: {followers}</Title>
-        {/* </Stack> */}
-
-        <Space h="md" />
-
-        <Space h="sm" />
-
-        <Text>Some description.</Text>
-        <Space h="sm" />
-
-        <Text>Some more</Text>
-
-        <Space h="xl" />
-
-        <Space h="xl" />
       </Paper>
       <Paper>
         <TopArtists />

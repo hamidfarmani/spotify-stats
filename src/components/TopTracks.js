@@ -1,6 +1,5 @@
 import { Carousel } from "@mantine/carousel";
 import {
-  Button,
   createStyles,
   Loader,
   Paper,
@@ -62,9 +61,6 @@ function Card({ image, title, category, followers }) {
           {title}
         </Title>
       </div>
-      <Button variant="white" color="dark">
-        Read article
-      </Button>
     </Paper>
   );
 }
@@ -81,7 +77,7 @@ export const TopTracks = () => {
     topTracks.items.map((item) => ({
       image: item.album.images[0].url,
       title: item.name,
-      category: item.artists.map((artist) => artist.name),
+      category: item.artists.map((artist) => artist.name + " "),
       followers: item.followers ? item.followers.total.toLocaleString() : null,
     }));
   const slides = data.map((item) => (

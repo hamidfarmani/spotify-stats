@@ -10,15 +10,15 @@ import {
 
 import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import TracksPage from "../components/TracksPage";
-import DashboardPage from "../components/DashboardPage";
-import MainHeader from "../components/MainHeader";
-import ArtistsPage from "../components/ArtistsPage";
-import { NavMenu } from "../components/NavMenu";
-import ProfilePage from "../components/ProfilePage";
-import { Login } from "../components/Login";
 import ArtistDetailsPage from "../components/ArtistDetailsPage";
+import ArtistsPage from "../components/ArtistsPage";
+import { Login } from "../components/Login";
+import MainHeader from "../components/MainHeader";
+import { NavMenu } from "../components/NavMenu";
+import { PageNotFound } from "../components/PageNotFound";
+import ProfilePage from "../components/ProfilePage";
 import RecentTracksPage from "../components/RecentTracksPage";
+import TracksPage from "../components/TracksPage";
 
 const AppRouter = () => {
   const theme = useMantineTheme();
@@ -88,9 +88,8 @@ const AppRouter = () => {
             }
           >
             <Routes>
-              <Route path="/" element={<DashboardPage />} exact />
+              <Route path="/" element={<ProfilePage />} exact />
               <Route path="/login" element={<Login />} exact />
-              <Route path="/dashboard" element={<DashboardPage />} exact />
               <Route path="/profile" element={<ProfilePage />} exact />
               <Route path="/artists" element={<ArtistsPage />} exact />
               <Route path="/artist/:id" element={<ArtistDetailsPage />} exact />
@@ -100,6 +99,7 @@ const AppRouter = () => {
                 element={<RecentTracksPage />}
                 exact
               />
+              <Route path="*" element={<PageNotFound />} />
             </Routes>
           </AppShell>
         </MantineProvider>
