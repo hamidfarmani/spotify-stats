@@ -1,6 +1,7 @@
 import { Group, Navbar, NavLink, Text } from "@mantine/core";
 import { Link, useLocation } from "react-router-dom";
 import {
+  BrandGithub,
   ChartBubble,
   ExternalLink,
   LayoutDashboard,
@@ -91,10 +92,10 @@ export const NavMenu = ({ opened }) => {
         <NavLink
           label="To GitHub repo"
           component="a"
-          href="https://github.com/hamidfarmani/visualizr"
+          href="https://github.com/hamidfarmani/spotify-stats"
           target="_blank"
           variant="outline"
-          icon={<ExternalLink />}
+          icon={<BrandGithub />}
         />
       </Navbar.Section>
     </Navbar>

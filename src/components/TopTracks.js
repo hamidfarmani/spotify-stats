@@ -9,7 +9,7 @@ import {
   useMantineTheme,
   Loader,
 } from "@mantine/core";
-import { useGetUsersTopArtists } from "./data-access/useGetUsersTopArtists";
+import { useGetUsersTopTracks } from "./data-access/useGetUsersTopTracks";
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -69,21 +69,21 @@ function Card({ image, title, category, followers }) {
   );
 }
 
-export const TopArtists = () => {
+export const TopTracks = () => {
   const theme = useMantineTheme();
   const mobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm}px)`);
-  const { data: topArtists } = useGetUsersTopArtists();
+  const { data: topTracks } = useGetUsersTopTracks();
 
-  if (!topArtists) return <Loader />;
+  if (!topTracks) return <Loader />;
 
-  console.log(topArtists);
+  console.log(topTracks);
 
   const data =
-    topArtists &&
-    topArtists.items.map((item) => ({
-      image: item.images[0].url,
+    topTracks &&
+    topTracks.items.map((item) => ({
+      image: item.album.images[0].url,
       title: item.name,
-      category: item.genres,
+      category: item.artists.map((artist) => artist.name),
       followers: item.followers ? item.followers.total.toLocaleString() : null,
     }));
   const slides = data.map((item) => (

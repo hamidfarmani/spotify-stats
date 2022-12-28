@@ -12,6 +12,7 @@ import {
 import { useGetProfile } from "./data-access/useGetProfile";
 import { useGetUsersTopArtists } from "./data-access/useGetUsersTopArtists";
 import { TopArtists } from "./TopArtists";
+import { TopTracks } from "./TopTracks";
 
 const ProfilePage = () => {
   const { data: profile } = useGetProfile();
@@ -27,22 +28,21 @@ const ProfilePage = () => {
 
   const followers = profile.followers && profile.followers.total;
   return (
-    <ScrollArea style={{ height: 730 }}>
+    <>
       <Paper shadow="md" p="md">
-        <Stack align="center">
-          <Image
-            radius="xl"
-            width={200}
-            height={200}
-            src={profileImage}
-            fit="contain"
-            withPlaceholder
-          />
-          <Title order={1}>{profile.display_name}</Title>
-          <Title order={5}>Followers: {followers}</Title>
-        </Stack>
+        {/* <Stack align="center"> */}
 
-        <TopArtists />
+        <Image
+          radius="xl"
+          width={200}
+          height={200}
+          src={profileImage}
+          fit="contain"
+          withPlaceholder
+        />
+        <Title order={1}>{profile.display_name}</Title>
+        <Title order={5}>Followers: {followers}</Title>
+        {/* </Stack> */}
 
         <Space h="md" />
 
@@ -57,7 +57,13 @@ const ProfilePage = () => {
 
         <Space h="xl" />
       </Paper>
-    </ScrollArea>
+      <Paper>
+        <TopArtists />
+        <Space h="sm" />
+
+        <TopTracks />
+      </Paper>
+    </>
   );
 };
 export default ProfilePage;
