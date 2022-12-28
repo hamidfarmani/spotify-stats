@@ -10,6 +10,8 @@ import {
   Title,
 } from "@mantine/core";
 import { useGetProfile } from "./data-access/useGetProfile";
+import { useGetUsersTopArtists } from "./data-access/useGetUsersTopArtists";
+import { TopArtists } from "./TopArtists";
 
 const ProfilePage = () => {
   const { data: profile } = useGetProfile();
@@ -19,6 +21,7 @@ const ProfilePage = () => {
   if (!profile) {
     return <Loader />;
   }
+
   const profileImage =
     profile.images.length > 0 && profile.images[0] && profile.images[0].url;
 
@@ -38,6 +41,8 @@ const ProfilePage = () => {
           <Title order={1}>{profile.display_name}</Title>
           <Title order={5}>Followers: {followers}</Title>
         </Stack>
+
+        <TopArtists />
 
         <Space h="md" />
 

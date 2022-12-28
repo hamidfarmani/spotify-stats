@@ -9,6 +9,7 @@ import {
 } from "@mantine/core";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { SpotifyAuth, Scopes } from "react-spotify-auth";
 
 const DashboardPage = () => {
   const { hash } = useLocation();
@@ -17,8 +18,6 @@ const DashboardPage = () => {
   const [value, setValue] = useState([]);
   const CLIENT_ID = "b83f71f2f54f4e50966d6c1fd1e1606a";
   const REDIRECT_URI = "http://localhost:3000";
-  const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
-  const RESPONSE_TYPE = "token";
 
   useEffect(() => {
     let token = window.localStorage.getItem("token");
@@ -37,27 +36,18 @@ const DashboardPage = () => {
     setToken(token);
   }, []);
 
-  const logout = () => {
-    setToken("");
-    window.localStorage.removeItem("token");
-  };
-
   return (
     <ScrollArea style={{ height: 730 }}>
       <Paper shadow="md" p="md">
         <Title order={1}>Spotify stats</Title>
         <Space h="md" />
 
-        {!token ? (
-          <Button
-            component="a"
-            href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}
-          >
-            Login to Spotify
-          </Button>
-        ) : (
-          <Button onClick={logout}>Logout</Button>
-        )}
+        <SpotifyAuth
+          redirectUri={REDIRECT_URI}
+          clientID={CLIENT_ID}
+          scopes={[Scopes.userReadPrivate, Scopes.userTopRead]}
+          onAccessToken={(token) => setToken(token)}
+        />
 
         <Space h="sm" />
 
