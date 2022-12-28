@@ -1,4 +1,4 @@
-import { Group, Navbar, NavLink, Text } from "@mantine/core";
+import { Navbar, NavLink } from "@mantine/core";
 import { Link, useLocation } from "react-router-dom";
 import {
   BrandGithub,
@@ -49,41 +49,20 @@ export const NavMenu = ({ opened }) => {
           icon={<User />}
           active={location.pathname === "/profile"}
         />
-      </Navbar.Section>
-
-      <Navbar.Section className={classes.section}>
-        <Group className={classes.collectionsHeader}>
-          <Text size="xs" weight={500} color="dimmed">
-            First category
-          </Text>
-        </Group>
-        <div className={classes.collections}>
-          <NavLink
-            label="Artists"
-            component={Link}
-            to="/artists"
-            icon={<Microphone2 />}
-            active={location.pathname === "/artists"}
-          />
-        </div>
-      </Navbar.Section>
-
-      <Navbar.Section className={classes.section}>
-        <Group className={classes.collectionsHeader}>
-          <Text size="xs" weight={500} color="dimmed">
-            Second category
-          </Text>
-        </Group>
-
-        <div className={classes.collections}>
-          <NavLink
-            label="Tracks"
-            component={Link}
-            to="/tracks"
-            icon={<Music />}
-            active={location.pathname === "/tracks"}
-          />
-        </div>
+        <NavLink
+          label="Artists"
+          component={Link}
+          to="/artists"
+          icon={<Microphone2 />}
+          active={location.pathname === "/artists"}
+        />
+        <NavLink
+          label="Tracks"
+          component={Link}
+          to="/tracks"
+          icon={<Music />}
+          active={location.pathname === "/tracks"}
+        />
       </Navbar.Section>
 
       <Navbar.Section className={classes.section}>
