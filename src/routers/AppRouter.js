@@ -83,6 +83,7 @@ const AppRouter = () => {
             }
           >
             <Routes>
+              <Route path="/" element={<DashboardPage />} exact />
               <Route path="/dashboard" element={<DashboardPage />} exact />
               <Route path="/link1" element={<Action1Page />} exact />
               <Route path="/link2" element={<Action2Page />} exact />

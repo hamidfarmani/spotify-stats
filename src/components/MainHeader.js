@@ -2,29 +2,21 @@ import {
   ActionIcon,
   Anchor,
   Group,
+  Image,
   MediaQuery,
-  Title,
   Tooltip,
 } from "@mantine/core";
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import { MoonStars, Sun } from "tabler-icons-react";
-import { useAppContext } from "../context/AppContext";
+import image from "../styles/images/spotify-icons-logos/Spotify_Logo_RGB_Green.png";
 
 const MainHeader = ({ dark, toggleColorScheme }) => {
-  const [arraySize, setArraySize] = useState(20);
-  const infoState = useAppContext();
-
-  const onGenerateClick = () => {
-    infoState.generateNewArray(arraySize);
-  };
-
   return (
     <Group position="apart" style={{ width: "100%" }}>
       <MediaQuery smallerThan="lg" styles={{ display: "none" }}>
         <Group position="left">
           <Anchor component={Link} to="/" style={{ textDecoration: "none" }}>
-            <Title order={2}>spotify-stats</Title>
+            <Image width={150} height={80} src={image} fit="contain" />
           </Anchor>
         </Group>
       </MediaQuery>
