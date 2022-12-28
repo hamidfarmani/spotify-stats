@@ -13,8 +13,9 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Action2Page from "../components/Action2Page";
 import DashboardPage from "../components/DashboardPage";
 import MainHeader from "../components/MainHeader";
-import Action1Page from "../components/MergeSortPage";
+import ArtistsPage from "../components/ArtistsPage";
 import { NavMenu } from "../components/NavMenu";
+import ProfilePage from "../components/ProfilePage";
 
 const AppRouter = () => {
   const theme = useMantineTheme();
@@ -85,7 +86,8 @@ const AppRouter = () => {
             <Routes>
               <Route path="/" element={<DashboardPage />} exact />
               <Route path="/dashboard" element={<DashboardPage />} exact />
-              <Route path="/link1" element={<Action1Page />} exact />
+              <Route path="/profile" element={<ProfilePage />} exact />
+              <Route path="/artists" element={<ArtistsPage />} exact />
               <Route path="/link2" element={<Action2Page />} exact />
             </Routes>
           </AppShell>

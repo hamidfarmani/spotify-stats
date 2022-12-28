@@ -2,7 +2,7 @@ import { Button } from "@mantine/core";
 import { useAppContext } from "../context/AppContext";
 import Stats from "./Stats";
 
-const Action1Page = () => {
+const ArtistsPage = () => {
   const { infoState } = useAppContext();
 
   return (
@@ -15,4 +15,4 @@ const Action1Page = () => {
     </>
   );
 };
-export default Action1Page;
+export default ArtistsPage;

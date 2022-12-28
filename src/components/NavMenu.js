@@ -4,8 +4,10 @@ import {
   ChartBubble,
   ExternalLink,
   LayoutDashboard,
+  Microphone2,
   Selector,
   SquareHalf,
+  User,
 } from "tabler-icons-react";
 import image from "../styles/images/profile.jpg";
 import { navStyles } from "../styles/navStyles";
@@ -40,6 +42,14 @@ export const NavMenu = ({ opened }) => {
           icon={<LayoutDashboard />}
           active={location.pathname === "/dashboard"}
         />
+
+        <NavLink
+          label="Profile"
+          component={Link}
+          to="/profile"
+          icon={<User />}
+          active={location.pathname === "/profile"}
+        />
       </Navbar.Section>
 
       <Navbar.Section className={classes.section}>
@@ -50,11 +60,11 @@ export const NavMenu = ({ opened }) => {
         </Group>
         <div className={classes.collections}>
           <NavLink
-            label="Link1"
+            label="Artists"
             component={Link}
-            to="/link1"
-            icon={<SquareHalf />}
-            active={location.pathname === "/link1"}
+            to="/artists"
+            icon={<Microphone2 />}
+            active={location.pathname === "/artists"}
           />
         </div>
       </Navbar.Section>
