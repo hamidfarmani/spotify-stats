@@ -18,6 +18,7 @@ import { NavMenu } from "../components/NavMenu";
 import ProfilePage from "../components/ProfilePage";
 import { Login } from "../components/Login";
 import ArtistDetailsPage from "../components/ArtistDetailsPage";
+import RecentTracksPage from "../components/RecentTracksPage";
 
 const AppRouter = () => {
   const theme = useMantineTheme();
@@ -94,6 +95,11 @@ const AppRouter = () => {
               <Route path="/artists" element={<ArtistsPage />} exact />
               <Route path="/artist/:id" element={<ArtistDetailsPage />} exact />
               <Route path="/tracks" element={<TracksPage />} exact />
+              <Route
+                path="/recent-tracks"
+                element={<RecentTracksPage />}
+                exact
+              />
             </Routes>
           </AppShell>
         </MantineProvider>

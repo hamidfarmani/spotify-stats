@@ -65,7 +65,11 @@ export const Login = (props) => {
         <SpotifyAuth
           redirectUri={REDIRECT_URI}
           clientID={CLIENT_ID}
-          scopes={[Scopes.userReadPrivate, Scopes.userTopRead]}
+          scopes={[
+            Scopes.userReadPrivate,
+            Scopes.userTopRead,
+            Scopes.userReadRecentlyPlayed,
+          ]}
           onAccessToken={(token) => setToken(token)}
           title="Login to your Spotify"
         />

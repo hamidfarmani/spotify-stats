@@ -2,6 +2,7 @@ import { Navbar, NavLink } from "@mantine/core";
 import { Link, useLocation } from "react-router-dom";
 import {
   BrandGithub,
+  History,
   LayoutDashboard,
   Microphone2,
   Music,
@@ -50,18 +51,25 @@ export const NavMenu = ({ opened }) => {
           active={location.pathname === "/profile"}
         />
         <NavLink
-          label="Artists"
+          label="Top artists"
           component={Link}
           to="/artists"
           icon={<Microphone2 />}
           active={location.pathname === "/artists"}
         />
         <NavLink
-          label="Tracks"
+          label="Top tracks"
           component={Link}
           to="/tracks"
           icon={<Music />}
           active={location.pathname === "/tracks"}
+        />
+        <NavLink
+          label="Recent tracks"
+          component={Link}
+          to="/recent-tracks"
+          icon={<History />}
+          active={location.pathname === "/recent-tracks"}
         />
       </Navbar.Section>
 
