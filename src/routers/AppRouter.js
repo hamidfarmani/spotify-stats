@@ -10,13 +10,14 @@ import {
 
 import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Action2Page from "../components/Action2Page";
+import TracksPage from "../components/TracksPage";
 import DashboardPage from "../components/DashboardPage";
 import MainHeader from "../components/MainHeader";
 import ArtistsPage from "../components/ArtistsPage";
 import { NavMenu } from "../components/NavMenu";
 import ProfilePage from "../components/ProfilePage";
 import { Login } from "../components/Login";
+import ArtistDetailsPage from "../components/ArtistDetailsPage";
 
 const AppRouter = () => {
   const theme = useMantineTheme();
@@ -91,7 +92,8 @@ const AppRouter = () => {
               <Route path="/dashboard" element={<DashboardPage />} exact />
               <Route path="/profile" element={<ProfilePage />} exact />
               <Route path="/artists" element={<ArtistsPage />} exact />
-              <Route path="/link2" element={<Action2Page />} exact />
+              <Route path="/artist/:id" element={<ArtistDetailsPage />} exact />
+              <Route path="/tracks" element={<TracksPage />} exact />
             </Routes>
           </AppShell>
         </MantineProvider>

@@ -1,14 +1,14 @@
 import { Carousel } from "@mantine/carousel";
-import { useMediaQuery } from "@mantine/hooks";
 import {
+  Button,
   createStyles,
+  Loader,
   Paper,
   Text,
   Title,
-  Button,
   useMantineTheme,
-  Loader,
 } from "@mantine/core";
+import { useMediaQuery } from "@mantine/hooks";
 import { useGetUsersTopArtists } from "./data-access/useGetUsersTopArtists";
 
 const useStyles = createStyles((theme) => ({
@@ -75,8 +75,6 @@ export const TopArtists = () => {
   const { data: topArtists } = useGetUsersTopArtists();
 
   if (!topArtists) return <Loader />;
-
-  console.log(topArtists);
 
   const data =
     topArtists &&

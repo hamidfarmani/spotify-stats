@@ -1,23 +1,10 @@
-import {
-  Center,
-  Image,
-  Loader,
-  Paper,
-  ScrollArea,
-  Space,
-  Stack,
-  Text,
-  Title,
-} from "@mantine/core";
+import { Image, Loader, Paper, Space, Text, Title } from "@mantine/core";
 import { useGetProfile } from "./data-access/useGetProfile";
-import { useGetUsersTopArtists } from "./data-access/useGetUsersTopArtists";
 import { TopArtists } from "./TopArtists";
 import { TopTracks } from "./TopTracks";
 
 const ProfilePage = () => {
   const { data: profile } = useGetProfile();
-
-  console.log(profile);
 
   if (!profile) {
     return <Loader />;

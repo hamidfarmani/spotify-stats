@@ -1,14 +1,14 @@
 import { Carousel } from "@mantine/carousel";
-import { useMediaQuery } from "@mantine/hooks";
 import {
+  Button,
   createStyles,
+  Loader,
   Paper,
   Text,
   Title,
-  Button,
   useMantineTheme,
-  Loader,
 } from "@mantine/core";
+import { useMediaQuery } from "@mantine/hooks";
 import { useGetUsersTopTracks } from "./data-access/useGetUsersTopTracks";
 
 const useStyles = createStyles((theme) => ({
@@ -75,8 +75,6 @@ export const TopTracks = () => {
   const { data: topTracks } = useGetUsersTopTracks();
 
   if (!topTracks) return <Loader />;
-
-  console.log(topTracks);
 
   const data =
     topTracks &&

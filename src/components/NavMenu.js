@@ -2,9 +2,9 @@ import { Group, Navbar, NavLink, Text } from "@mantine/core";
 import { Link, useLocation } from "react-router-dom";
 import {
   BrandGithub,
-  ChartBubble,
   LayoutDashboard,
   Microphone2,
+  Music,
   Selector,
   User,
 } from "tabler-icons-react";
@@ -77,11 +77,11 @@ export const NavMenu = ({ opened }) => {
 
         <div className={classes.collections}>
           <NavLink
-            label="Link2"
+            label="Tracks"
             component={Link}
-            to="/link2"
-            icon={<ChartBubble />}
-            active={location.pathname === "/link2"}
+            to="/tracks"
+            icon={<Music />}
+            active={location.pathname === "/tracks"}
           />
         </div>
       </Navbar.Section>
