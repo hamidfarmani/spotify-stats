@@ -46,8 +46,8 @@ export const Login = () => {
   const { classes } = useStyles();
   const authContext = useAuthContext();
 
-  const CLIENT_ID = "b83f71f2f54f4e50966d6c1fd1e1606a";
-  const REDIRECT_URI = "http://localhost:3000";
+  // const CLIENT_ID = "b83f71f2f54f4e50966d6c1fd1e1606a";
+  // const REDIRECT_URI = "http://localhost:3000";
 
   function doLogin(accessToken) {
     window.location.hash = "";
@@ -67,8 +67,8 @@ export const Login = () => {
           Welcome to Spotify stats!
         </Title>
         <SpotifyAuth
-          redirectUri={REDIRECT_URI}
-          clientID={CLIENT_ID}
+          redirectUri={process.env.REACT_APP_REDIRECT_URI}
+          clientID={process.env.REACT_APP_CLIENT_ID}
           scopes={[
             Scopes.userReadPrivate,
             Scopes.userTopRead,

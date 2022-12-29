@@ -99,6 +99,7 @@ const AppRouter = () => {
                 }
               />
               <Route path="/login" element={<Login />} exact />
+              <Route path="/spotify-stats" element={<ProfilePage />} exact />
               <Route path="/profile" element={<ProfilePage />} exact />
               <Route path="/artists" element={<ArtistsPage />} exact />
               <Route path="/artist/:id" element={<ArtistDetailsPage />} exact />

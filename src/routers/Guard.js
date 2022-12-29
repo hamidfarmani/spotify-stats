@@ -10,7 +10,8 @@ export default function Guard({ children }) {
       <Navigate
         to={
           window.location.pathname !== "/" &&
-          window.location.pathname !== "/login"
+          window.location.pathname !== "/login" &&
+          window.location.pathname !== "/spotify-stats"
             ? window.location.pathname
             : "/profile"
         }
