@@ -9,7 +9,7 @@ import {
 } from "@mantine/core";
 
 import { useState } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { HashRouter, Route, Routes } from "react-router-dom";
 import ArtistDetailsPage from "../components/ArtistDetailsPage";
 import ArtistsPage from "../components/ArtistsPage";
 import { Login } from "../components/Login";
@@ -43,7 +43,7 @@ const AppRouter = () => {
       colorScheme={colorScheme}
       toggleColorScheme={toggleColorScheme}
     >
-      <BrowserRouter>
+      <HashRouter>
         <MantineProvider
           theme={{
             loader: "oval",
@@ -99,7 +99,6 @@ const AppRouter = () => {
                 }
               />
               <Route path="/login" element={<Login />} exact />
-              <Route path="/spotify-stats" element={<ProfilePage />} exact />
               <Route path="/profile" element={<ProfilePage />} exact />
               <Route path="/artists" element={<ArtistsPage />} exact />
               <Route path="/artist/:id" element={<ArtistDetailsPage />} exact />
@@ -113,7 +112,7 @@ const AppRouter = () => {
             </Routes>
           </AppShell>
         </MantineProvider>
-      </BrowserRouter>
+      </HashRouter>
     </ColorSchemeProvider>
   );
 };
