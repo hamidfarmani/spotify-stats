@@ -1,4 +1,4 @@
-import { Image, Loader, Paper, Space, Title } from "@mantine/core";
+import { Card, Image, Loader, Paper, Space, Title } from "@mantine/core";
 import { useGetProfile } from "./data-access/useGetProfile";
 import { useGetUserFollowing } from "./data-access/useGetUserFollowing";
 import { TopArtists } from "./TopArtists";
@@ -9,9 +9,7 @@ const ProfilePage = () => {
   const { data: userFollowing, isLoading: isFollowingLoading } =
     useGetUserFollowing();
 
-  if (isProfileLoading && isFollowingLoading) {
-    return <Loader />;
-  }
+  if (isProfileLoading && isFollowingLoading) return <Loader />;
 
   const profileImage =
     profile.images.length > 0 && profile.images[0] && profile.images[0].url;
@@ -20,7 +18,7 @@ const ProfilePage = () => {
   const followings = userFollowing && userFollowing.artists.items.length;
   return (
     <>
-      <Paper shadow="md" p="md">
+      <Card withBorder radius="md">
         <Image
           radius="xl"
           width={200}
@@ -32,13 +30,12 @@ const ProfilePage = () => {
         <Title order={1}>{profile.display_name}</Title>
         <Title order={5}>Followers: {followers}</Title>
         <Title order={5}>Following: {followings}</Title>
-      </Paper>
-      <Paper>
+
         <TopArtists />
         <Space h="sm" />
 
         <TopTracks />
-      </Paper>
+      </Card>
     </>
   );
 };

@@ -7,6 +7,7 @@ import {
   useMantineTheme,
 } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
+import { Link } from "react-router-dom";
 import { useGetUsersTopArtists } from "./data-access/useGetUsersTopArtists";
 
 const useStyles = createStyles((theme) => ({
@@ -38,7 +39,7 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-function Card({ image, title }) {
+function Card({ image, title, to }) {
   const { classes } = useStyles();
 
   return (
@@ -48,6 +49,8 @@ function Card({ image, title }) {
       radius="md"
       sx={{ backgroundImage: `url(${image})` }}
       className={classes.card}
+      component={Link}
+      to={to}
     >
       <div>
         <Title order={3} className={classes.title}>
@@ -70,6 +73,7 @@ export const TopArtists = () => {
     topArtists.items.map((item) => ({
       image: item.images[0].url,
       title: item.name,
+      to: `/artist/${item.id}`,
     }));
   const slides = data.map((item) => (
     <Carousel.Slide key={item.title}>
@@ -79,11 +83,12 @@ export const TopArtists = () => {
 
   return (
     <Carousel
-      slideSize="10%"
-      breakpoints={[{ maxWidth: "sm", slideSize: "20%", slideGap: 5 }]}
+      sx={{ maxWidth: "80%" }}
+      slideSize="20%"
+      breakpoints={[{ maxWidth: "sm", slideSize: "20%", slideGap: 4 }]}
       slideGap="xl"
       align="start"
-      slidesToScroll={mobile ? 1 : 5}
+      slidesToScroll={mobile ? 1 : 4}
       styles={{
         control: {
           "&[data-inactive]": {

@@ -88,11 +88,12 @@ export const TopTracks = () => {
 
   return (
     <Carousel
-      slideSize="10%"
-      breakpoints={[{ maxWidth: "sm", slideSize: "20%", slideGap: 5 }]}
+      sx={{ maxWidth: "80%" }}
+      slideSize="20%"
+      breakpoints={[{ maxWidth: "sm", slideSize: "20%", slideGap: 4 }]}
       slideGap="xl"
       align="start"
-      slidesToScroll={mobile ? 1 : 5}
+      slidesToScroll={mobile ? 1 : 4}
       styles={{
         control: {
           "&[data-inactive]": {

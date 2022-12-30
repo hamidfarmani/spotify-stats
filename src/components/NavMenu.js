@@ -35,7 +35,7 @@ export const NavMenu = ({ opened }) => {
             profile.images[0].url
           }
           name={profile.display_name}
-          email="hamidfarmani1@gmail.com"
+          email={profile.email}
           icon={<Selector size={14} stroke={1.5} />}
         />
       </Navbar.Section>
