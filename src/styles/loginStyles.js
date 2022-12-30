@@ -1,11 +1,8 @@
 import { createStyles } from "@mantine/core";
-import Background from "./images/background.jpg";
 
 export const useLoginStyles = createStyles((theme) => ({
   wrapper: {
     minHeight: 800,
-    backgroundSize: "cover",
-    backgroundImage: `url(${Background})`,
     boxShadow: theme.shadows.md,
     border: 0,
     borderRadius: theme.radius.sm,
@@ -27,13 +24,5 @@ export const useLoginStyles = createStyles((theme) => ({
   title: {
     color: theme.colorScheme === "dark" ? theme.white : theme.black,
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
-  },
-
-  logo: {
-    color: theme.colorScheme === "dark" ? theme.white : theme.black,
-    width: 120,
-    display: "block",
-    marginLeft: "auto",
-    marginRight: "auto",
   },
 }));
