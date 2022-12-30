@@ -12,6 +12,8 @@ import { useAuthContext } from "../context/AuthProvider";
 import image from "../styles/images/spotify-icons-logos/Spotify_Logo_RGB_Green.png";
 
 const MainHeader = ({ dark, toggleColorScheme }) => {
+  const { authState } = useAuthContext();
+
   const { logout } = useAuthContext();
 
   return (
@@ -42,19 +44,21 @@ const MainHeader = ({ dark, toggleColorScheme }) => {
           </ActionIcon>
         </Tooltip>
 
-        <Tooltip label="Logout">
-          <ActionIcon
-            variant="outline"
-            color={dark ? "yellow" : "blue"}
-            component={Link}
-            to={"/"}
-            onClick={() => {
-              logout();
-            }}
-          >
-            <Logout size={18} />
-          </ActionIcon>
-        </Tooltip>
+        {authState && authState.userLoggedIn && (
+          <Tooltip label="Logout">
+            <ActionIcon
+              variant="outline"
+              color={dark ? "yellow" : "blue"}
+              component={Link}
+              to={"/"}
+              onClick={() => {
+                logout();
+              }}
+            >
+              <Logout size={18} />
+            </ActionIcon>
+          </Tooltip>
+        )}
       </Group>
     </Group>
   );

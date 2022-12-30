@@ -4,8 +4,9 @@ import { useAuthContext } from "../context/AuthProvider";
 
 export default function Guard({ children }) {
   const { authState } = useAuthContext();
+  console.log(window.location.pathname);
 
-  if (authState && authState.user) {
+  if (authState && authState.userLoggedIn) {
     return (
       <Navigate
         to={
