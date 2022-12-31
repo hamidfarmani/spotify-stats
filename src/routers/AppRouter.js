@@ -7,7 +7,9 @@ import {
   MediaQuery,
   useMantineTheme,
 } from "@mantine/core";
+import axios from "axios";
 
+import { Buffer } from "buffer";
 import { useEffect, useState } from "react";
 import { HashRouter, Route, Routes } from "react-router-dom";
 import ArtistDetailsPage from "../components/ArtistDetailsPage";
@@ -39,12 +41,33 @@ const AppRouter = () => {
   const { authState } = useAuthContext();
 
   useEffect(() => {
-    const hash = window.location.hash;
-    const accessToken = hash.substring(hash.indexOf("access_token=") + 13);
-    if (accessToken) {
-      localStorage.setItem("token", accessToken);
+    const exchangeCodeForToken = async (code) => {
+      const encodedAuth = Buffer.from(
+        `${process.env.REACT_APP_CLIENT_ID}:${process.env.REACT_APP_CLIENT_SECRET}`
+      ).toString("base64");
+
+      const response = await axios.post(
+        "https://accounts.spotify.com/api/token",
+        {
+          grant_type: "authorization_code",
+          code,
+          redirect_uri: process.env.REACT_APP_REDIRECT_URI,
+        },
+        {
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+            Authorization: `Basic ${encodedAuth}`,
+          },
+        }
+      );
+
+      localStorage.setItem("token", response.data.access_token);
+      localStorage.setItem("refreshToken", response.data.refresh_token);
       window.location.replace(process.env.REACT_APP_BASE_NAME);
-    }
+    };
+
+    const code = window.location.search.split("code=")[1];
+    exchangeCodeForToken(code);
   }, []);
 
   return (

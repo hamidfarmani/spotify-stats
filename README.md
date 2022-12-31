@@ -30,4 +30,3 @@ To deploy the app into your GitHub pages, you can run `yarn run deploy`.
 - [React](https://reactjs.org/) 18.2.0
 - [Mantine](https://mantine.dev/) is the theming and styling library used in this project.
 - [Spotify Web API](https://developer.spotify.com/documentation/web-api/reference/#/) has been used get information from Spotify.
-- [react-spotify-auth](https://www.npmjs.com/package/react-spotify-auth) is the way to authenticate users.
