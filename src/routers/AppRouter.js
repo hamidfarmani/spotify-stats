@@ -71,7 +71,13 @@ const AppRouter = () => {
             navbarOffsetBreakpoint="sm"
             asideOffsetBreakpoint="sm"
             fixed
-            navbar={authState.userLoggedIn ? <NavMenu opened={opened} /> : ""}
+            navbar={
+              authState.userLoggedIn ? (
+                <NavMenu opened={opened} setOpened={setOpened} />
+              ) : (
+                ""
+              )
+            }
             header={
               <Header height={70} p="md" background={theme.colors.gray[6]}>
                 <div
@@ -101,6 +107,14 @@ const AppRouter = () => {
             <Routes>
               <Route
                 path="/"
+                element={
+                  <Guard>
+                    <Login />
+                  </Guard>
+                }
+              />
+              <Route
+                path="/spotify-stats"
                 element={
                   <Guard>
                     <Login />

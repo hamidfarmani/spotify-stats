@@ -66,7 +66,7 @@ export const PageNotFound = () => {
           </Text>
           <Button
             component={Link}
-            to="/"
+            to={process.env.REACT_APP_BASE_NAME}
             variant="outline"
             size="md"
             mt="xl"

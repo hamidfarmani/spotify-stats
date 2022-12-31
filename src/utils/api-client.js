@@ -47,7 +47,7 @@ instance.interceptors.response.use(
         error.response.data.error_message.includes("Token has expired"))
     ) {
       localStorage.removeItem("token");
-      window.location.href = `/login`;
+      window.location.href = `/`;
     }
 
     return Promise.reject(error);

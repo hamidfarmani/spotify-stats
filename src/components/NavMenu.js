@@ -11,7 +11,7 @@ import { navStyles } from "../styles/navStyles";
 import { useGetProfile } from "./data-access/useGetProfile";
 import UserButton from "./UserButton";
 
-export const NavMenu = ({ opened }) => {
+export const NavMenu = ({ opened, setOpened }) => {
   const location = useLocation();
   const { classes } = navStyles();
 
@@ -37,6 +37,7 @@ export const NavMenu = ({ opened }) => {
           name={profile.display_name}
           email={profile.email}
           icon={<Selector size={14} stroke={1.5} />}
+          onClick={() => setOpened(false)}
         />
       </Navbar.Section>
 
@@ -47,6 +48,7 @@ export const NavMenu = ({ opened }) => {
           to="/artists"
           icon={<Microphone2 />}
           active={location.pathname === "/artists"}
+          onClick={() => setOpened(false)}
         />
         <NavLink
           label="Top tracks"
@@ -54,6 +56,7 @@ export const NavMenu = ({ opened }) => {
           to="/tracks"
           icon={<Music />}
           active={location.pathname === "/tracks"}
+          onClick={() => setOpened(false)}
         />
         <NavLink
           label="Recent tracks"
@@ -61,6 +64,7 @@ export const NavMenu = ({ opened }) => {
           to="/recent-tracks"
           icon={<History />}
           active={location.pathname === "/recent-tracks"}
+          onClick={() => setOpened(false)}
         />
       </Navbar.Section>
 

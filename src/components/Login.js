@@ -46,6 +46,7 @@ export const Login = () => {
               onAccessToken={(token) => doLogin(token)}
               onFailure={(response) => console.error(response)}
               title="Login to your Spotify"
+              showDialog={true}
             />
           </Center>
         </Paper>

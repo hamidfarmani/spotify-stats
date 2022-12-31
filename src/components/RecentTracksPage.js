@@ -29,7 +29,7 @@ const RecentTracksPage = () => {
   }));
 
   const rows = data.map((item) => (
-    <tr key={item.name}>
+    <tr key={item.name + " " + item.album}>
       <td>
         <Group spacing="sm">
           <Avatar size={40} src={item.avatar} radius={40} />
