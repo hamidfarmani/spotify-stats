@@ -1,4 +1,5 @@
 import { Center, Loader } from "@mantine/core";
+import { NotificationsProvider } from "@mantine/notifications";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { QueryClient, QueryClientProvider } from "react-query";
@@ -20,7 +21,9 @@ root.render(
             </Center>
           }
         >
-          <AppRouter />
+          <NotificationsProvider position="top-right">
+            <AppRouter />
+          </NotificationsProvider>
         </React.Suspense>
       </AuthProvider>
     </React.StrictMode>

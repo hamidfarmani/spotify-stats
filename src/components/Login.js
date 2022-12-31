@@ -1,9 +1,18 @@
-import { BackgroundImage, Button, Center, Paper, Title } from "@mantine/core";
+import {
+  BackgroundImage,
+  Button,
+  Center,
+  Paper,
+  Stack,
+  Text,
+  Title,
+} from "@mantine/core";
 
 import React from "react";
 import { BrandSpotify } from "tabler-icons-react";
 import Background from "../styles/images/login-backgrond.jpg";
 import { useLoginStyles } from "../styles/loginStyles";
+import SendEmailPage from "./SendEmailPage";
 
 export const Login = () => {
   const { classes } = useLoginStyles();
@@ -24,16 +33,22 @@ export const Login = () => {
           >
             Welcome to Spotify stats!
           </Title>
-          <Center>
+          <Stack>
             <Button
               style={{ backgroundColor: "#1DB954" }}
               leftIcon={<BrandSpotify />}
               component="a"
               href={`${AUTH_ENDPOINT}?client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}&response_type=${RESPONSE_TYPE}&scope=${scopes}`}
             >
-              Login to spotify
+              If you signed up, Login here
             </Button>
-          </Center>
+
+            <Center>
+              <Text>or</Text>
+            </Center>
+
+            <SendEmailPage />
+          </Stack>
         </Paper>
       </BackgroundImage>
     </div>
