@@ -1,4 +1,4 @@
-import { Card, Image, Loader, Paper, Space, Title } from "@mantine/core";
+import { Card, Image, Loader, Space, Title } from "@mantine/core";
 import { useGetProfile } from "./data-access/useGetProfile";
 import { useGetUserFollowing } from "./data-access/useGetUserFollowing";
 import { TopArtists } from "./TopArtists";

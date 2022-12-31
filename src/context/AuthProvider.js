@@ -51,7 +51,6 @@ export const AuthProvider = ({ children }) => {
   const logout = () => {
     dispatch({ type: "Logout" });
     localStorage.removeItem("token");
-    this.props.history.push("/login");
   };
 
   const profile = (profile) => {

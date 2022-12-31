@@ -43,7 +43,7 @@ const AppRouter = () => {
     const accessToken = hash.substring(hash.indexOf("access_token=") + 13);
     if (accessToken) {
       localStorage.setItem("token", accessToken);
-      window.history.replaceState({}, document.title, "/");
+      window.location.replace(process.env.REACT_APP_BASE_NAME);
     }
   }, []);
 

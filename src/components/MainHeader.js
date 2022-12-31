@@ -50,7 +50,7 @@ const MainHeader = ({ dark, toggleColorScheme }) => {
               variant="outline"
               color={dark ? "yellow" : "blue"}
               component={Link}
-              to={"/"}
+              to={process.env.REACT_APP_BASE_NAME}
               onClick={() => {
                 logout();
               }}
