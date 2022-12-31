@@ -12,7 +12,10 @@ const ProfilePage = () => {
   if (isProfileLoading && isFollowingLoading) return <Loader />;
 
   const profileImage =
-    profile.images.length > 0 && profile.images[0] && profile.images[0].url;
+    profile &&
+    profile.images.length > 0 &&
+    profile.images[0] &&
+    profile.images[0].url;
 
   const followers = profile.followers && profile.followers.total;
   const followings = userFollowing && userFollowing.artists.items.length;

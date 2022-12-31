@@ -8,8 +8,8 @@ import {
   useMantineTheme,
 } from "@mantine/core";
 
-import { useState } from "react";
-import { BrowserRouter, HashRouter, Route, Routes } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { HashRouter, Route, Routes } from "react-router-dom";
 import ArtistDetailsPage from "../components/ArtistDetailsPage";
 import ArtistsPage from "../components/ArtistsPage";
 import { Login } from "../components/Login";
@@ -38,13 +38,21 @@ const AppRouter = () => {
   const dark = colorScheme === "dark";
   const { authState } = useAuthContext();
 
+  useEffect(() => {
+    const hash = window.location.hash;
+    const accessToken = hash.substring(hash.indexOf("access_token=") + 13);
+    if (accessToken) {
+      localStorage.setItem("token", accessToken);
+      window.history.replaceState({}, document.title, "/");
+    }
+  }, []);
+
   return (
     <ColorSchemeProvider
       colorScheme={colorScheme}
       toggleColorScheme={toggleColorScheme}
     >
-      {console.log(process.env.REACT_APP_BASE_NAME)}
-      <BrowserRouter basename={process.env.REACT_APP_BASE_NAME}>
+      <HashRouter basename={process.env.REACT_APP_BASE_NAME}>
         <MantineProvider
           theme={{
             loader: "oval",
@@ -113,7 +121,7 @@ const AppRouter = () => {
             </Routes>
           </AppShell>
         </MantineProvider>
-      </BrowserRouter>
+      </HashRouter>
     </ColorSchemeProvider>
   );
 };

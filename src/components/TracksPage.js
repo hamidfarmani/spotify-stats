@@ -2,19 +2,23 @@ import {
   ActionIcon,
   Avatar,
   Card,
+  Center,
   Group,
   Loader,
   ScrollArea,
+  SegmentedControl,
   Table,
   Text,
   Title,
 } from "@mantine/core";
 import moment from "moment/moment";
+import { useState } from "react";
 import { PlayerPlay } from "tabler-icons-react";
 import { useGetUsersTopTracks } from "./data-access/useGetUsersTopTracks";
 
 const TracksPage = () => {
-  const { data: topTracks } = useGetUsersTopTracks();
+  const [timeRange, setTimeRange] = useState("medium_term");
+  const { data: topTracks, refetch } = useGetUsersTopTracks(timeRange);
 
   if (!topTracks) return <Loader />;
 
@@ -63,10 +67,46 @@ const TracksPage = () => {
     </tr>
   ));
 
+  function onTimeChange(newTimeRange) {
+    setTimeRange(newTimeRange);
+    refetch({ timeRange: newTimeRange });
+  }
+
   return (
     <Card withBorder radius="md">
-      <Title order={2}>Your Top Tracks</Title>
-
+      <Group position="apart">
+        <Title order={2}>Your Top Tracks</Title>
+        <SegmentedControl
+          value={timeRange}
+          onChange={(value) => onTimeChange(value)}
+          data={[
+            {
+              value: "long_term",
+              label: (
+                <Center>
+                  <Text>All</Text>
+                </Center>
+              ),
+            },
+            {
+              value: "medium_term",
+              label: (
+                <Center>
+                  <Text>Last 6 months</Text>
+                </Center>
+              ),
+            },
+            {
+              value: "short_term",
+              label: (
+                <Center>
+                  <Text>Last 4 weeks</Text>
+                </Center>
+              ),
+            },
+          ]}
+        />
+      </Group>
       <ScrollArea>
         <Table sx={{ minWidth: 800 }} verticalSpacing="md">
           <thead>

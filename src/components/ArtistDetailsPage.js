@@ -28,7 +28,7 @@ const ArtistDetailsPage = () => {
       <Group position="center" spacing="xl">
         <div>
           <Title order={3}>
-            {artistDetails.followers.total.toLocaleString()}
+            {artistDetails && artistDetails.followers.total.toLocaleString()}
           </Title>
           <Text>Followers</Text>
         </div>

@@ -1,8 +1,13 @@
 import { useQuery } from "react-query";
 import { apiClient } from "../../utils/api-client";
 
-const fetchUsersTopTracks = () => apiClient.get(`/me/top/tracks`);
+const fetchUsersTopTracks = (timeRange) =>
+  apiClient.get(
+    `/me/top/tracks?time_range=${timeRange ? timeRange : "medium_term"}`
+  );
 
-export const useGetUsersTopTracks = () => {
-  return useQuery(["usersTopTracks"], fetchUsersTopTracks);
+export const useGetUsersTopTracks = (timeRange) => {
+  return useQuery(["usersTopTracks"], () => fetchUsersTopTracks(timeRange), {
+    variables: { timeRange },
+  });
 };

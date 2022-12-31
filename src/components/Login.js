@@ -3,19 +3,17 @@ import { BackgroundImage, Center, Paper, Title } from "@mantine/core";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Scopes, SpotifyAuth } from "react-spotify-auth";
-import { useAuthContext } from "../context/AuthProvider";
-import { useLoginStyles } from "../styles/loginStyles";
 import "react-spotify-auth/dist/index.css";
+import { useAuthContext } from "../context/AuthProvider";
 import Background from "../styles/images/login-backgrond.jpg";
+import { useLoginStyles } from "../styles/loginStyles";
 
 export const Login = () => {
   const { classes } = useLoginStyles();
   const authContext = useAuthContext();
   const navigate = useNavigate();
-  console.log(process.env.REACT_APP_REDIRECT_URI);
 
   function doLogin(accessToken) {
-    console.log(accessToken);
     window.location.hash = "";
     authContext.login({ accessToken });
     navigate("/");
@@ -46,6 +44,7 @@ export const Login = () => {
                 Scopes.userFollowRead,
               ]}
               onAccessToken={(token) => doLogin(token)}
+              onFailure={(response) => console.error(response)}
               title="Login to your Spotify"
             />
           </Center>
