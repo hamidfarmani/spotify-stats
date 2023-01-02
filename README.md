@@ -6,7 +6,7 @@ To use the application, you will need to have a Spotify account and grant the ap
 
 # Live version
 
-You can check the live version of this project [here](https://hamidfarmani.github.io/spotify-stats/).
+You can check the live version of this project [here](https://hamid-spotify.netlify.app/).
 
 # Features
 
