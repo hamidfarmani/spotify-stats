@@ -1,4 +1,13 @@
-import { Card, Image, Loader, Space, Title } from "@mantine/core";
+import {
+  Card,
+  Group,
+  Image,
+  Loader,
+  Space,
+  Stack,
+  Text,
+  Title,
+} from "@mantine/core";
 import { useGetProfile } from "./data-access/useGetProfile";
 import { useGetUserFollowing } from "./data-access/useGetUserFollowing";
 import { TopArtists } from "./TopArtists";
@@ -22,18 +31,31 @@ const ProfilePage = () => {
   return (
     <>
       <Card withBorder radius="md">
-        <Image
-          radius="xl"
-          width={200}
-          height={200}
-          src={profileImage}
-          fit="contain"
-          withPlaceholder
-        />
-        <Title order={1}>{profile.display_name}</Title>
-        <Title order={5}>Followers: {followers}</Title>
-        <Title order={5}>Following: {followings}</Title>
-
+        <Group position="left" pb="md">
+          <Image
+            radius="xl"
+            width={200}
+            height={200}
+            src={profileImage}
+            fit="contain"
+            withPlaceholder
+          />
+          <Stack>
+            <Title order={1}>{profile.display_name}</Title>
+            <Title order={3}>
+              Followers{" "}
+              <Text span c="blue" inherit>
+                {followers}
+              </Text>
+            </Title>
+            <Title order={3}>
+              Following{" "}
+              <Text span c="blue" inherit>
+                {followings}
+              </Text>
+            </Title>
+          </Stack>
+        </Group>
         <TopArtists />
         <Space h="sm" />
 

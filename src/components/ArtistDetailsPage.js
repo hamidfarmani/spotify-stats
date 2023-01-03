@@ -7,9 +7,9 @@ const ArtistDetailsPage = () => {
   const { id } = useParams();
 
   const { classes } = useArtistsPageStyles();
-  const { data: artistDetails } = useGetArtistDetails(id);
+  const { data: artistDetails, isLoading } = useGetArtistDetails(id);
 
-  if (!artistDetails) return <Loader />;
+  if (isLoading) return <Loader />;
 
   return (
     <Card withBorder radius="md" className={classes.card}>
