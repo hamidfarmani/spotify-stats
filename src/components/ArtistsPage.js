@@ -7,12 +7,14 @@ import {
   Title,
   UnstyledButton,
 } from "@mantine/core";
+import { useMediaQuery } from "@mantine/hooks";
 import { Link } from "react-router-dom";
 import { useArtistsPageStyles } from "../styles/artistsPageStyles";
 import { useGetUsersTopArtists } from "./data-access/useGetUsersTopArtists";
 
 const ArtistsPage = () => {
-  const { classes } = useArtistsPageStyles();
+  const { classes, theme } = useArtistsPageStyles();
+  const mobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm}px)`);
   const { data: topArtists } = useGetUsersTopArtists();
 
   if (!topArtists) return <Loader />;
@@ -50,7 +52,7 @@ const ArtistsPage = () => {
     <Card withBorder radius="md" className={classes.card}>
       <Title order={2}>Your Top Artists</Title>
 
-      <SimpleGrid cols={6} mt="md">
+      <SimpleGrid cols={mobile ? 1 : 6} mt="md">
         {items}
       </SimpleGrid>
     </Card>
