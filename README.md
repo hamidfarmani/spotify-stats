@@ -14,6 +14,7 @@ You can check the live version of this project [here](https://hamid-spotify.netl
 2. Top tracks: View your most played tracks over a specified time period.
 3. Recently played tracks: View a list of the tracks you have recently played on Spotify.
 4. Responsive design: The application is designed to be responsive, so it can be easily viewed on a variety of devices, including desktop computers, tablets, and smartphones.
+5. Sending emails with a template using EmailJs
 
 For instructions on how to install and set up the application, please see the installation instructions.
 
@@ -25,8 +26,17 @@ For instructions on how to install and set up the application, please see the in
 
 To deploy the app into your GitHub pages, you can run `yarn run deploy`.
 
+# Environment variables
+
+All of the needed environment variables have been mentioned in the `.env.example` file.
+
+- You need to create your developer account on Spotify and get client ID and the secret and pass them in .env file
+- If you want to send out emails using EmailJs, you need to follow their instructions and provide them in your .env file
+- Provide the base name and url as well
+
 # Dependencies
 
 - [React](https://reactjs.org/) 18.2.0
 - [Mantine](https://mantine.dev/) is the theming and styling library used in this project.
 - [Spotify Web API](https://developer.spotify.com/documentation/web-api/reference/#/) has been used get information from Spotify.
+- [EmailJs](https://www.emailjs.com/) has been used to send emails with a template.
